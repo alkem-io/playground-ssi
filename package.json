@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node index.js"
+    "start": "babel-node index.js",
+    "server-1": "STAGE=1 babel-node server.js -d dist --source-map",
+    "client-2": "STAGE=2 babel-node client.js -d dist --source-map",
+    "server-3": "STAGE=3 babel-node server.js -d dist --source-map"
   },
   "repository": {
     "type": "git",
