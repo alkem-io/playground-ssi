@@ -1,0 +1,34 @@
+{
+  "name": "server-identity",
+  "version": "0.0.1",
+  "description": "exploring jolocom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChinmayPatel/Server.Identity.git"
+  },
+  "keywords": [
+    "self-sovereign",
+    "identity"
+  ],
+  "author": "",
+  "license": "EUPL",
+  "bugs": {
+    "url": "https://github.com/ChinmayPatel/Server.Identity/issues"
+  },
+  "homepage": "https://github.com/ChinmayPatel/Server.Identity#readme",
+  "dependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "dotenv": "^8.2.0",
+    "ethereumjs-utils": "^5.2.5",
+    "jolocom-lib": "^4.2.8"
+  },
+  "type": "module",
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
