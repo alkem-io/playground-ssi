@@ -12,17 +12,6 @@ var demoContract = web3.eth.contract([
     {
         "inputs": [
             {
-                "internalType": "address payable",
-                "name": "_deliverer",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "inputs": [
-            {
                 "internalType": "bool",
                 "name": "agreed",
                 "type": "bool"
@@ -31,6 +20,33 @@ var demoContract = web3.eth.contract([
         "name": "ProposalReply",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            }
+        ],
+        "name": "ProposalSend",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "SatisfiedClient",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "SignalAmount",
+        "outputs": [],
+        "payable": true,
         "type": "function"
     },
     {
@@ -46,10 +62,38 @@ var demoContract = web3.eth.contract([
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "_client",
+                "type": "address"
+            },
+            {
+                "internalType": "address payable",
+                "name": "_deliverer",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [],
+        "name": "DisplayProposal",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "view": true,
+        "type": "function"
     }
 ]);
 
-var demoUser = demoContract.at('0x1dc3F241D93d296a54EadaBDfB64C0b3a02a00fA');
+var demoUser = demoContract.at('0xd4Ca5D60A10720378A4cE94F5bca6029FEd5A981');
 
 var STATE = false
 

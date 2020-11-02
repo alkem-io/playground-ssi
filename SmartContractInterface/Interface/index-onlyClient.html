@@ -7,7 +7,6 @@
     <title>Smart Contract UI Demo</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="./node_modules/web3/dist/web3.min.js"></script>
-    <script src="./node_modules/bignumber.js"></script>
     <script>
     window.onerror = function (msg) {
         msg = msg.replace('Error: VM Exception while processing transaction: revert', 'Error: ')
@@ -18,7 +17,7 @@
 </head>
 <body>
     <div class="header">
-        <header style="height: 50px; width: 100%; background-color: red; text-align: center">
+        <header>
             <h1>Smart Contract Interface</h1>
         </header>
     </div>
@@ -26,36 +25,31 @@
 
     <div class="section">
         <section>
-            <h1 style="text-align: center">Client: To Do's</h1>
-            <p></p>
-            <hr>
-            <p></p>
+            <h2>Client Dashboard</h2>
+
         </section>
         <section>
             <p>
                 Step 1: Send proposal
-                <label>
-                    <input id="proposalDescr" type="text" maxlength="150">
-                </label>
+                <br>
+                <form id="formuliertje"rows="5" cols="30">
+                <input  name="textje" placeholder="Enter Proposal" maxlength="125" style='width:80%'></input>
                 <button id="sendProp">Send</button>
-            </p>
-            <hr>
+            </form>
             <p>
                 Step 2: Enter signal amount
+                <br>
                 <input id="Signalamount" type="number">
                 <button id="sendButton">Send</button>
             </p>
-            <hr>
             <p>
                 Step 3: Confirm receiving
                 <button id="confrec">Confirm</button>
             </p>
-            <hr>
             <p>
                 Step 4: Transfer
                 <button id="trans">Transfer</button>
             </p>
-            <hr>
         </section>
     </div>
     <script type="text/javascript" src="script-onlyClient.js">

@@ -12,35 +12,6 @@ var demoContract = web3.eth.contract([
     {
         "inputs": [
             {
-                "internalType": "address payable",
-                "name": "_client",
-                "type": "address"
-            },
-            {
-                "internalType": "address payable",
-                "name": "_deliverer",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "inputs": [],
-        "name": "DisplayProposal",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
                 "internalType": "bool",
                 "name": "agreed",
                 "type": "bool"
@@ -75,14 +46,14 @@ var demoContract = web3.eth.contract([
         "inputs": [],
         "name": "SignalAmount",
         "outputs": [],
-        "payable": true,
+        "stateMutability": "payable",
         "type": "function"
     },
     {
         "inputs": [],
         "name": "Transfer",
         "outputs": [],
-        "stateMutability": "payable",
+        "payable": true,
         "type": "function"
     },
     {
@@ -91,10 +62,39 @@ var demoContract = web3.eth.contract([
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "_client",
+                "type": "address"
+            },
+            {
+                "internalType": "address payable",
+                "name": "_deliverer",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [],
+        "name": "DisplayProposal",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
     }
 ]);
 
-var demoUser = demoContract.at('0x295f20f07Eb661D9860ab23B5493c6cF61b6bFbD');
+var demoUser = demoContract.at('0xd4Ca5D60A10720378A4cE94F5bca6029FEd5A981');
 
 var STATE = false
 
@@ -116,6 +116,7 @@ document.getElementById('trans').addEventListener('click', function () {
 });
 
 document.getElementById('sendProp').addEventListener('click', function () {
-    demoUser.ProposalSend(String(document.getElementById('proposalDescr').value)
-    )
+    var form = document.getElementById("formuliertje").elements;
+    var from2 = form[0];
+    demoUser.ProposalSend(String(from2.value));
 });

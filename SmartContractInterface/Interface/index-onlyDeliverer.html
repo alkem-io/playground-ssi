@@ -7,7 +7,6 @@
     <title>Smart Contract UI Demo</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="./node_modules/web3/dist/web3.min.js"></script>
-    <script src="./node_modules/bignumber.js"></script>
     <script>
     window.onerror = function (msg) {
         msg = msg.replace('Error: VM Exception while processing transaction: revert', 'Error: ')
@@ -18,42 +17,46 @@
 </head>
 <body>
     <div class="header">
-        <header style="height: 50px; width: 100%; background-color: red; text-align: center">
+        <header>
             <h1>Smart Contract Interface</h1>
         </header>
     </div>
     <div class="section">
         <section>
-            <h1 style="text-align: center">Deliverer: To Do's</h1>
+            <h2>Deliverer Dashboard</h2>
             <p></p>
-            <hr>
             <p></p>
         </section>
         <section>
             <p>
+                <button id="Fetch">Fetch</button>
+                <p id="Dinfo"></p>
+            </p>
+            <p>
                 Step 1: Accept or deny proposal
                 <button id="Accept">Accept</button>
-                /
+                <br>
+                <br>
                 <button id="Deny">Deny</button>
             </p>
-            <hr>
+            <br>
             <p>
                 Step 2: Now send your reply to the client
                 <button id="reply">Send</button>
             </p>
-            <hr>
+            <br>
             <p>
                 Step 3: Confirm delivery
                 <button id="confdel">Confirm</button>
             </p>
-            <hr>
+            <br>
             <p>
                 Step 4: Transfer
                 <button id="trans">Transfer</button>
             </p>
-            <hr>
         </section>
     </div>
-    <script type="text/javascript" src="script-onlyDeliverer.js"></script>
+    <script type="text/javascript" src="script-onlyDeliverer.js">
+    </script>
 </body>
 </html>
