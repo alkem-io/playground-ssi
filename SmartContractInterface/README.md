@@ -6,6 +6,9 @@ When in the right project folder use:
 ```node
 npm install
 ```
+
+Ensure that ```ganache-cli``` is installed globally: ```npm install -g ganache-cli```
+
 To install the necessary node modules. After installing the necessary modules use ganchi-cli to set up a local rpc enviroment:
 ```node
 ganache-cli

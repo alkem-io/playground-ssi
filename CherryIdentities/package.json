@@ -13,7 +13,7 @@
     "@jolocom/sdk": "^1.0.0-rc10",
     "@jolocom/sdk-storage-typeorm": "^3.0.0",
     "jest": "^26.6.1",
-    "jolocom-lib": "^5.1.0-rc7",
+    "jolocom-lib": "^5.1.0-rc10",
     "mocha": "^8.2.0",
     "yarn": "^1.22.10"
   }
