@@ -9,8 +9,8 @@
     <script src="./node_modules/web3/dist/web3.min.js"></script>
     <script>
     window.onerror = function (msg) {
-        msg = msg.replace('Error: VM Exception while processing transaction: revert', 'Error: ')
-        alert(msg)
+        msg = msg.replace('Error: VM Exception while processing transaction: revert', 'Error: ');
+        alert(msg);
         return true
         }
     </script>
@@ -25,16 +25,15 @@
         <section>
             <h2>Deliverer Dashboard</h2>
             <p></p>
-            <p></p>
         </section>
         <section>
             <p>
+                Step 1: Fetch proposal
                 <button id="Fetch">Fetch</button>
-                <p>Proposal:</p>
                 <p id="Dinfo"></p>
             </p>
             <p>
-                Step 1: Accept or deny proposal
+                Step 2: Accept or deny proposal
                 <button id="Accept">Accept</button>
                 <br>
                 <br>
@@ -42,17 +41,17 @@
             </p>
             <br>
             <p>
-                Step 2: Now send your reply to the client
+                Step 3: Now send your reply to the client
                 <button id="reply">Send</button>
             </p>
             <br>
             <p>
-                Step 3: Confirm delivery
+                Step 4: Confirm delivery
                 <button id="confdel">Confirm</button>
             </p>
             <br>
             <p>
-                Step 4: Transfer
+                Step 5: Transfer
                 <button id="trans">Transfer</button>
             </p>
         </section>
