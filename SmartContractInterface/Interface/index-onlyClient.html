@@ -9,8 +9,8 @@
     <script src="./node_modules/web3/dist/web3.min.js"></script>
     <script>
     window.onerror = function (msg) {
-        msg = msg.replace('Error: VM Exception while processing transaction: revert', 'Error: ')
-        alert(msg)
+        msg = msg.replace('Error: VM Exception while processing transaction: revert', 'Error: ');
+        alert(msg);
         return true
     }
     </script>
@@ -21,31 +21,37 @@
             <h1>Smart Contract Interface</h1>
         </header>
     </div>
-
-
     <div class="section">
         <section>
             <h2>Client Dashboard</h2>
-
+            <p></p>
         </section>
         <section>
             <p>
                 Step 1: Send proposal
                 <br>
                 <form id="formuliertje"rows="5" cols="30">
-                <input  name="textje" placeholder="Enter Proposal" maxlength="125" style='width:80%'></input>
-                <button id="sendProp">Send</button>
-            </form>
+                    <label>
+                        <input  name="textje" placeholder="Enter Proposal" maxlength="125" style='width:80%'>
+                    </label>
+                    <button id="sendProp">Send</button>
+                </form>
+            </p>
             <p>
                 Step 2: Enter signal amount
                 <br>
-                <input id="Signalamount" type="number">
+                <br>
+                <label for="Signalamount">
+                    <input id="Signalamount" type="number">
+                </label>
                 <button id="sendButton">Send</button>
             </p>
+            <br>
             <p>
                 Step 3: Confirm receiving
                 <button id="confrec">Confirm</button>
             </p>
+            <br>
             <p>
                 Step 4: Transfer
                 <button id="trans">Transfer</button>
