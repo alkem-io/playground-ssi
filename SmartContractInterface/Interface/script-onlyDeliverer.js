@@ -8,7 +8,36 @@ if (typeof web3 !== 'undefined') {
 
 web3.eth.defaultAccount = web3.eth.accounts[0];
 
-var demoContract = web3.eth.contract([
+var demoUser = web3.eth.contract([
+    {
+        "inputs": [
+            {
+                "internalType": "address payable",
+                "name": "_client",
+                "type": "address"
+            },
+            {
+                "internalType": "address payable",
+                "name": "_deliverer",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [],
+        "name": "DisplayProposal",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     {
         "inputs": [
             {
@@ -46,14 +75,14 @@ var demoContract = web3.eth.contract([
         "inputs": [],
         "name": "SignalAmount",
         "outputs": [],
-        "payable": true,
+        "stateMutability": "payable",
         "type": "function"
     },
     {
         "inputs": [],
         "name": "Transfer",
         "outputs": [],
-        "stateMutability": "payable",
+        "payable": true,
         "type": "function"
     },
     {
@@ -62,38 +91,8 @@ var demoContract = web3.eth.contract([
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address payable",
-                "name": "_client",
-                "type": "address"
-            },
-            {
-                "internalType": "address payable",
-                "name": "_deliverer",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "inputs": [],
-        "name": "DisplayProposal",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "view": true,
-        "type": "function"
     }
-]);
-
-var demoUser = demoContract.at('0xd4Ca5D60A10720378A4cE94F5bca6029FEd5A981');
+]).at('0x1c6ee084E7459Ec3bE43aa21ccE720C615287b4B');
 
 var STATE = false
 
@@ -117,4 +116,9 @@ document.getElementById('Deny').addEventListener('click', function () {
 
 document.getElementById('reply').addEventListener('click', function () {
     demoUser.ProposalReply(STATE)
+});
+
+document.getElementById('Fetch').addEventListener('click', async function () {
+    info = demoUser.DisplayProposal.call({ from: web3.eth.accounts[1] })
+    document.getElementById('Dinfo').innerHTML = info;   
 });
