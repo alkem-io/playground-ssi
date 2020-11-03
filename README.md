@@ -2,22 +2,22 @@
 This file has been created in order to give insights in the smart contracts field assignment. 
 
 # Definition of roles
-### **Identities Custodian**
-The identities custodian is a role that controls the contract, further named as Custodian. The custodian will be a trusted third party who will host the smart contract, most likely Odyssey. The Custodian wil be able to acces and moderate both the Client's side, as well as the Deliverers' side.
-
 ### **The Client**
-The client is the party that offers the smart contract. The client wants a problem solved and are looking for people solving that problem. The client can put in a description of the problem, what kind of solution they are expecting and the amount of money/tokens they are willing to pay.
+The client is the party that offers the smart contract, further named as Client. The Client wants a problem solved and is looking for people solving that problem. The Client can put in a description of the problem, what kind of solution they are expecting, and the amount of money/tokens they are willing to pay.
 
 ### **The Deliverers**
-The deliverers are the people that will accept the smart contracts offered by the client. These people are looking for jobs and tasks on the platform.
+The deliverers are the people that will accept the smart contracts offered by the Client, further named as Deliverers. These people are looking for jobs and tasks on the platform.
+
+### **Identities Custodian**
+The identities custodian is a role that controls the contract, further named as Custodian. The Custodian will be a trusted third party who will host the smart contract, most likely Odyssey. The Custodian wil be able to access and moderate both the Client's side, as well as the Deliverers' side.
 
 ![roles](https://user-images.githubusercontent.com/58250102/97601650-12614f00-1a13-11eb-9060-1010acbd2382.png)
 
 
 # The use case
-In this use case the custodian, or trusted third party, will have set up the smart contract on their platform, a client will set up a listing for a certain price in order to solve a certain problem, which can be described.
+In this use case the Custodian will have set up the smart contract on their platform, the Client will set up a listing for a certain price in order to solve a certain problem, which can be described.
 
-The deliverers can accept the smart contract and post their solution in the smart contract. After the client accepts the solution to the smart contract, the deliverers will receive their payment via a signal amount that will initiate a transfer via for example another smart contract.
+The Deliverers can accept the smart contract and post their solution in the smart contract. After the Client accepts the solution to the smart contract, the Deliverers will receive their payment via a signal amount that will initiate a transfer via for example another smart contract.
 
 # What the smart contract is supposed to do:
 - [x] Client X defines what task he wants completed/what problem solved.
@@ -30,7 +30,7 @@ The deliverers can accept the smart contract and post their solution in the smar
 # What other tasks will have to be completed:
 - [x] Have a working smart contract contract
 - [x] Have a separate working interface for the Client and the Deliverer
-- [ ] Identities custodian can overwrite and moderate both sides of the contract.
+- [ ] The Custodian can overwrite and moderate both sides of the contract.
 - [ ] Self Sovereign Identities have to be working.
 - [ ] 
 
@@ -38,20 +38,22 @@ The deliverers can accept the smart contract and post their solution in the smar
 Cooperate through note console, ganazi.cli
 
 ## Smart Contract in solidity
+- [x] ProposalSend: Client can set and send a proposal to the smart contract.
+- [x] DisplayProposal: Deliverers can fetch and display the Client's proposal.
+- [x] ProposalReply: Deliverers can accept or deny the proposal.
 - [x] SignalAmount: Client can activate the smart contract.
 - [x] WorkDelivered: Deliverers can confirm delivery of work.
 - [x] SatisifiedCustomer: Client can confirm satisfaction of delivery
 - [x] Transfer: Deliverers and clients can transfer the funds one the Client and the Deliverers have both confirmed delivery and satisfaction.
-- [x] Decription of task/problem can be added.
 - [ ] SetPrice: Client can set a price.
 - [ ] AcceptPrice: Deliverers can accept the price.
 
 
 ## Self Sovereign Identities
-- [ ] Client and Deliverers need to be able to be able to use the interface using Self Sovereign Identities.
+- [ ] Client and Deliverers need to be able to use the interface using Self Sovereign Identities.
 
 ## Client en Deliverers user interface
-The smart contract needs to be accessible for both the Client and the Deliverer separately. In order to make this possible, 7 files were created. Three general files, two specifically for the Client and two specifically for the Deliverer.
+The smart contract needs to be accessible for both the Client and the Deliverers separately. In order to make this possible, 7 files were created. Three general files, two specifically for the Client and two specifically for the Deliverers.
 
 General files:
 * styles.css
@@ -62,7 +64,7 @@ For the Client:
 * index-onlyClient.html
 * script-onlyClient.js
 
-For the Deliverer:
+For the Deliverers:
 * index-onlyDeliverer.html
 * script-onlyDeliverer.js
 
@@ -82,15 +84,22 @@ This file is automatically generated as well and exists at the root of a JavaScr
 A JavaScript to communicate between the smart contract (solidity) and the .html file.
 
 ### **Necessary functions of the user interface for the Client's side:**
-- [ ] Clients can acces this portal using their self sovereign identity. (or web2)
-- [ ] Clients can sent signalamount to the smart contract.
-- [ ] Clients can add a description of task/problem.
-- [ ] Clients can set the price they want to pay to each deliverer.
-- [ ] Clients can confirm satisfaction of delivered material.
-- [ ] Client can activate payment of the contract
+- [ ] Client can acces this portal using their self sovereign identity (or their web2 account).
+- [x] Client can add a description of the problem to its proposal.
+- [x] Client can send the proposal to the smart contract.
+- [ ] Client can set the price they want to pay to each deliverer.
+- [x] Client can send a signal amount to the smart contract.
+- [ ] Client can cancel the contract any time, then receives money back.
+- [x] Client can confirm satisfaction of delivered material.
+- [x] Client can activate payment of the contract.
 
 ### **Necessary functions of the user interface for the Deliverer's side:**
-- [ ] Deliverers can acces this portal using their self sovereign identity. (or web2)
-- [ ] Deliverers can accept and decline set price by client
-- [ ] Deliverers can confirm delivery
-- [ ] Deliverers can activate payment of the contract
+- [ ] Deliverers can access this portal using their self sovereign identity (or their web2 account).
+- [x] Deliverers can fetch the Client's proposal.
+- [x] Deliverers can accept or deny this proposal.
+- [x] Deliverers can send this reply (accept/deny) to the contract.
+- [ ] Deliverers can accept or deny set price by client.
+- [x] Deliverers can send this reply (accept/deny) to the contract.
+- [ ] Deliverers can cancel the contract any time.
+- [x] Deliverers can confirm delivery of the work/solution.
+- [x] Deliverers can activate payment of the contract.
