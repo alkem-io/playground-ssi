@@ -11,6 +11,9 @@ The client is the party that offers the smart contract. The client wants a probl
 ### **The Deliverers**
 The deliverers are the people that will accept the smart contracts offered by the client. These people are looking for jobs and tasks on the platform.
 
+![roles](https://user-images.githubusercontent.com/58250102/97601650-12614f00-1a13-11eb-9060-1010acbd2382.png)
+
+
 # The use case
 In this use case the custodian, or trusted third party, will have set up the smart contract on their platform, a client will set up a listing for a certain price in order to solve a certain problem, which can be described.
 
