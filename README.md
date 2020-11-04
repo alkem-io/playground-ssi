@@ -11,13 +11,17 @@ The deliverers are the people that will accept the smart contracts offered by th
 ### **Identities Custodian**
 The identities custodian is a role that controls the contract, further named as Custodian. The Custodian will be a trusted third party who will host the smart contract, most likely Odyssey. The Custodian wil be able to access and moderate both the Client's side, as well as the Deliverers' side.
 
-![roles](https://user-images.githubusercontent.com/58250102/97601650-12614f00-1a13-11eb-9060-1010acbd2382.png)
-
-
 # The use case
 In this use case the Custodian will have set up the smart contract on their platform, the Client will set up a listing for a certain price in order to solve a certain problem, which can be described.
 
 The Deliverers can accept the smart contract and post their solution in the smart contract. After the Client accepts the solution to the smart contract, the Deliverers will receive their payment via a signal amount that will initiate a transfer via for example another smart contract.
+
+![roles](https://user-images.githubusercontent.com/58250102/97601650-12614f00-1a13-11eb-9060-1010acbd2382.png)
+
+The diagram below depicts the same interaction flow, but this diagram has a lot more detail in it.
+
+![interaction](https://imgur.com/a/edcLsjm)
+
 
 # What the smart contract is supposed to do:
 - [x] Client X defines what task he wants completed/what problem solved.
