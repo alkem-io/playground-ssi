@@ -49,7 +49,7 @@ contract SignalAt2PartyConfirmation {
     }
     
     function CancelAgreement() public {
-        require(currentStateDeliverer != StateDeliverer.COMPLETE || currentStateClient != StateClient.COMPLETE, "Cannot cancel agreement due to the completion of one parties work");
+        require(currentStateDeliverer != StateDeliverer.COMPLETE && currentStateClient != StateClient.COMPLETE, "Cannot cancel agreement due to the completion of one parties work");
         currentStateClient = StateClient.AGREEMENT_CANCELLED;
         selfdestruct(client);
     }
@@ -58,6 +58,7 @@ contract SignalAt2PartyConfirmation {
         currentStateDeliverer = StateDeliverer.COMPLETE;
     }
     function SatisfiedClient() onlyClient external {
+        require(currentStateDeliverer == StateDeliverer.COMPLETE, "Deliverer did not deliver their work yet");
         currentStateClient = StateClient.COMPLETE;
     }
     function Transfer() payable public {
