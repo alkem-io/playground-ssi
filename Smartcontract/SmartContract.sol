@@ -1,12 +1,14 @@
 pragma solidity ^0.6.0;
 
 contract SignalAt2PartyConfirmation {
-    enum StateClient { PROPOSAL_SEND, PROPOSAL_AGREED, PROPOSAL_DENIED, AWAITING_TRANSFER, AWAITING_DELIVERY, COMPLETE }
-    enum StateDeliverer { PROPOSAL_SEND, PROPOSAL_AGREED, PROPOSAL_DENIED, AWAITING_TRANSFER, AWAITING_DELIVERY, COMPLETE }
+    enum StateClient { START, PROPOSAL_SEND, PROPOSAL_AGREED, PROPOSAL_DENIED, AGREEMENT_CANCELLED, AWAITING_TRANSFER, AWAITING_DELIVERY, COMPLETE }
+    enum StateDeliverer { START, PROPOSAL_SEND, PROPOSAL_AGREED, PROPOSAL_DENIED, AWAITING_TRANSFER, AWAITING_DELIVERY, COMPLETE }
     StateClient private currentStateClient;
     StateDeliverer private currentStateDeliverer;
     address payable client;
     address payable deliverer;
+    string store;
+    
     modifier onlyClient() {
         require(msg.sender == client, "Only client can call this method");
         _;
@@ -20,12 +22,18 @@ contract SignalAt2PartyConfirmation {
         deliverer = _deliverer;
     }
     
-    function ProposalSend() onlyClient public {
+    function ProposalSend(string memory description) onlyClient public {
         currentStateClient = StateClient.PROPOSAL_SEND;
+        store = description;
+    }
+    
+    function DisplayProposal() onlyDeliverer public view returns (string memory){
+        require(currentStateClient == StateClient.PROPOSAL_SEND, "Client did not send a propsal yet" );
+        return store;
     }
     
     function ProposalReply(bool agreed) public {
-        require(currentStateClient == StateClient.PROPOSAL_SEND, "Client did not send proposal");
+        require(currentStateClient == StateClient.PROPOSAL_SEND, "Client did not send proposal yet");
         if (agreed) {
             currentStateDeliverer = StateDeliverer.PROPOSAL_AGREED;
         }
@@ -36,8 +44,16 @@ contract SignalAt2PartyConfirmation {
     
     function SignalAmount() onlyClient public payable {
         require(currentStateDeliverer == StateDeliverer.PROPOSAL_AGREED, "Deliverer did not agree on proposal yet");
+        require(currentStateClient != StateClient.AGREEMENT_CANCELLED, "This smart contract is out of order");
         currentStateClient = StateClient.AWAITING_DELIVERY;
     }
+    
+    function CancelAgreement() {
+        require(currentStateDeliverer != StateDeliverer.COMPLETE || currentStateClient != StateClient.COMPLETE, "Cannot cancel agreement due to the completion of one parties work")
+        currentStateClient = StateClient.AGREEMENT_CANCELLED;
+        selfdestruct(client);
+    }
+    
     function WorkDelivered() onlyDeliverer external {
         currentStateDeliverer = StateDeliverer.COMPLETE;
     }
