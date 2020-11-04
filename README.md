@@ -20,7 +20,7 @@ The Deliverers can accept the smart contract and post their solution in the smar
 
 The diagram below depicts the same interaction flow, but this diagram has a lot more detail in it.
 
-![interaction](https://imgur.com/a/edcLsjm)
+![Diagram](https://user-images.githubusercontent.com/71760326/98146813-20f4ae00-1ecc-11eb-9e40-ebf2cbb08a21.png)
 
 
 # What the smart contract is supposed to do:
