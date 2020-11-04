@@ -1,4 +1,4 @@
-# Instructions: How to delpoy the smart contract
+# Instructions: How to deploy the smart contract
 This file contains the instructions on how to run the smart contract. In order to run this contract you will need to have the following languages/programs installed:
 
 * Node.js
@@ -7,10 +7,10 @@ This file contains the instructions on how to run the smart contract. In order t
 
 ## Fetching files from Github
 * Download the SmartContract.sol from [GitHub](https://github.com/cherrytwist/Server.Identity/tree/hhs-assignment/Smartcontract)
-* Download the SmartcontractInterface from [GitHub](https://github.com/cherrytwist/Server.Identity/tree/hhs-assignment) 
+* Download the SmartContractInterface from [GitHub](https://github.com/cherrytwist/Server.Identity/tree/hhs-assignment) 
 
 ## Install ganache-cli
-Ganache-cli needs to be running to create a local Remote procedure call, or RPC, environment
+Ganache-cli needs to be running to create a local Remote procedure call, or RPC, environment.
 '''Command Prompt
     
     cd *SmartContractInterface\map\location*
