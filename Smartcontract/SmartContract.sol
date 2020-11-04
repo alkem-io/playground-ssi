@@ -55,6 +55,7 @@ contract SignalAt2PartyConfirmation {
     }
     
     function WorkDelivered() onlyDeliverer external {
+        require(currentStateDeliverer == StateDeliverer.PROPOSAL_AGREED, "First accept the proposal before continuing");
         currentStateDeliverer = StateDeliverer.COMPLETE;
     }
     function SatisfiedClient() onlyClient external {
