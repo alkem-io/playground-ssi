@@ -27,6 +27,13 @@ var demoUser = web3.eth.contract([
     },
     {
         "inputs": [],
+        "name": "CancelAgreement",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
         "name": "DisplayProposal",
         "outputs": [
             {
@@ -75,7 +82,7 @@ var demoUser = web3.eth.contract([
         "inputs": [],
         "name": "SignalAmount",
         "outputs": [],
-        "stateMutability": "payable",
+        "payable": true,
         "type": "function"
     },
     {
@@ -92,7 +99,7 @@ var demoUser = web3.eth.contract([
         "stateMutability": "nonpayable",
         "type": "function"
     }
-]).at('0x1c6ee084E7459Ec3bE43aa21ccE720C615287b4B');
+]).at('0x17a73EF0807DF0a18Ef5967f0EC909820b83A98c');
 
 var STATE = false
 
@@ -118,3 +125,8 @@ document.getElementById('sendProp').addEventListener('click', function () {
     var from2 = form[0];
     demoUser.ProposalSend(String(from2.value));
 });
+
+document.getElementById('Cancel').addEventListener('click', function () {
+    demoUser.CancelAgreement();
+});
+
