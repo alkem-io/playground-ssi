@@ -3,20 +3,38 @@
 }
 
 body {
-    width: 70%;
     height: 100vh;
 }
 .header {
-    font-style: bold;
-    font-family: sans-serif;
+    font-style: oblique;
+    font-family:'Montserrat', sans-serif;
 }
 
+.header button {
+    float: right;
+    padding: 5px;
+    border-radius: 2px;
+    width: 150px;
+    color: red;
+    border-color: red;
+    font-style: oblique;
+}
+
+.header button:hover {
+    color: white;
+    background-color: red;
+}
+
+
 h2 {
-    font-family: sans-serif;
+    font-family:'Montserrat', sans-serif;
+}
+
+.section {
+    width: 80%;
 }
 .section button {
     color: black;
-    border-radius: 2px;
     transition-duration: 0.4s;
     border-color: navy;
     font-size: 14px;
