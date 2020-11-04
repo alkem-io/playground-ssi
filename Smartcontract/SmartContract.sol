@@ -48,8 +48,8 @@ contract SignalAt2PartyConfirmation {
         currentStateClient = StateClient.AWAITING_DELIVERY;
     }
     
-    function CancelAgreement() {
-        require(currentStateDeliverer != StateDeliverer.COMPLETE || currentStateClient != StateClient.COMPLETE, "Cannot cancel agreement due to the completion of one parties work")
+    function CancelAgreement() public {
+        require(currentStateDeliverer != StateDeliverer.COMPLETE || currentStateClient != StateClient.COMPLETE, "Cannot cancel agreement due to the completion of one parties work");
         currentStateClient = StateClient.AGREEMENT_CANCELLED;
         selfdestruct(client);
     }
