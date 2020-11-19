@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Smart Contract UI Demo</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="./node_modules/bignumber.js"></script>
+</head>
+<body>
+    <div class="header">
+        <header style="height: 50px; width: 100%; background-color: red; text-align: center">
+            <h1>Smart Contract Interface</h1>
+        </header>
+    </div>
+    <div class="section">
+        <section>
+            <h1>Functions</h1>
+            <label for="Signalamount">Enter signal amount: </label>
+            <input id="Signalamount" type="number" >
+            <button id="sendButton">Send</button>
+            <p></p>
+            <hr>
+            <p></p>
+        </section>
+        <section>
+            <button id="confdel">Confirm Delivery</button>
+            <label for="confdel">(as a deliverer)</label>
+            <p></p>
+            <hr>
+            <p></p>
+        </section>
+        <section>
+            <button id="confrec">Confirm Receiving</button>
+            <label for="confrec">(as a client)</label>
+            <p></p>
+            <hr>
+            <p></p>
+        </section>
+        <section>
+            <button id="trans">Transfer</button>
+            <label for="trans">(value)</label>
+            <p></p>
+            <hr>
+            <p></p>
+        </section>
+        <section>
+            <button id="AmountButton">Get Signal Amount</button>
+            <input id="insert">
+        </section>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
