@@ -13,11 +13,11 @@
     "ts-node-dev": "^1.0.0-pre.60"
   },
   "dependencies": {
-    "@jolocom/sdk": "^1.0.0-rc12",
-    "@jolocom/sdk-storage-typeorm": "^3.0.0",
+    "@jolocom/sdk": "^1.0.0",
+    "@jolocom/sdk-storage-typeorm": "^4.0.0",
     "ethers": "^5.0.19",
     "jest": "^26.6.1",
-    "jolocom-lib": "^5.1.0-rc10",
+    "jolocom-lib": "^5.1.0",
     "mocha": "^8.2.0",
     "sqlite3": "^4.2.0",
     "typeorm": "^0.2.29",
