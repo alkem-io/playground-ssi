@@ -1,20 +1,20 @@
-const typeorm = require('typeorm')
-const { JolocomTypeormStorage } = require('@jolocom/sdk-storage-typeorm')
-const { JolocomSDK } = require('jolocom-sdk')
-const typeormConfig = require('./ormconfig')
- 
+import { ConnectionOptions, createConnection } from 'typeorm'
+import { JolocomTypeormStorage } from '@jolocom/sdk-storage-typeorm'
+import { JolocomSDK } from '@jolocom/sdk'
+import typeormConfig from './ormconfig'
+
 async function init() {
-  const typeormConnection = await typeorm.createConnection(typeormConfig)
+  const conf = typeormConfig as ConnectionOptions
+  const typeormConnection = await createConnection(conf)
   const storage = new JolocomTypeormStorage(typeormConnection)
  
   console.log('about to create SDK instance')
   const sdk = new JolocomSDK({ storage })
- 
-  // Running sdk.init() with no arguments will:
-  // - create an identity if it doesn't exist
-  // - load the identity from storage
-  const identityWallet = await sdk.init()
-  console.log('Agent identity', identityWallet.identity)
+
+  // Running sdk.createAgent() will create a new Identity
+  // sdk.loadAgent will load an identity from storage
+  const agent = await sdk.createAgent("your password", "jun")
+  console.log('Agent identity', agent.identityWallet.identity)
 }
- 
+
 init()
