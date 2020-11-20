@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "identities-demo": "ts-node-dev src/app"
+    "identities-demo": "ts-node-dev src/identity-manager/app"
   },
   "author": "",
   "license": "ISC",
