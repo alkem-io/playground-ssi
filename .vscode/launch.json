@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CherryIdentities",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run", "identities-demo"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal"
+                      
+        }
+    ]
+}
