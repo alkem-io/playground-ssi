@@ -1,3 +1,6 @@
 **/node_modules/*
 *.sqlite3
 **/package-lock.json
+*.log
+agent*File
+credentials.json

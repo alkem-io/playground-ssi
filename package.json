@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "identities-demo": "ts-node-dev src/identity-manager/app"
+    "identities-demo": "ts-node-dev src/identity-manager/identities-demo"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,9 @@
   "dependencies": {
     "@jolocom/sdk": "^1.0.0",
     "@jolocom/sdk-storage-typeorm": "^4.0.0",
+    "cli-interact": "^0.1.9",
     "ethers": "^5.0.19",
+    "generate-password": "^1.5.1",
     "jest": "^26.6.1",
     "jolocom-lib": "^5.1.0",
     "mocha": "^8.2.0",
