@@ -34,6 +34,8 @@ async function init(stage: string) {
     const jwtEncodedAuthReqToken = authReqToken.encode();
     fs.writeFileSync(agent1TokenFile, jwtEncodedAuthReqToken);
     identityMgr.logger.info(`....stored: ${agent1TokenFile}`);
+    const didDocument = agent1.identityWallet.didDocument;
+    identityMgr.logger.info(`....did doc: ${didDocument.did} - ${didDocument.context}`);
 
   } else if (stage === '2') {
     identityMgr.logger.info("Generating agent1 identity...");
@@ -57,6 +59,7 @@ async function init(stage: string) {
     // agent1 to load and accept
     const agent1Did = fs.readFileSync(agent1DidFile).toString();
     const agent1 = await identityMgr.loadAgent(agent1Did);
+    agent1.identityWallet.didDocument
 
     // Load in the response agent1
     const agent2AuthResponse = fs.readFileSync(agent2TokenFile).toString();
