@@ -1,14 +1,5 @@
-if (typeof web3 !== 'undefined') {
-    web3 = new Web3(web3.currentProvider);
-    console.log(web3);
-} else {
-    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-    console.log(web3);
-}
-
-web3.eth.defaultAccount = web3.eth.accounts[0];
-
-var demoUser = web3.eth.contract([
+const Backend='0x06160ab8270d3DC38905E746C1679ab57E781E4C'
+const BackendABI=[
     {
         "inputs": [
             {
@@ -99,18 +90,18 @@ var demoUser = web3.eth.contract([
         "stateMutability": "nonpayable",
         "type": "function"
     }
-]).at('0x17a73EF0807DF0a18Ef5967f0EC909820b83A98c');
+]
 
+var accounts;
 var STATE = false
+var BackendContract;  
 
-document.getElementById('confdel').addEventListener('click', function () {
-    demoUser.WorkDelivered({
-        from: web3.eth.accounts[1]
-    })
+document.getElementById('confdel').addEventListener('click', async function () {
+    await BackendContract.methods.WorkDelivered().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
 
-document.getElementById('trans').addEventListener('click', function () {
-    demoUser.Transfer()
+document.getElementById('trans').addEventListener('click', async function () {
+    await BackendContract.methods.Transfer().call({from: accounts[0]}).catch(error => {ErrorHandling(error)})
 });
 
 document.getElementById('Accept').addEventListener('click', function () {
@@ -121,15 +112,42 @@ document.getElementById('Deny').addEventListener('click', function () {
     STATE = false
 });
 
-document.getElementById('reply').addEventListener('click', function () {
-    demoUser.ProposalReply(STATE)
+document.getElementById('reply').addEventListener('click', async function () {
+    await BackendContract.methods.ProposalReply(STATE).send({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
 
 document.getElementById('Fetch').addEventListener('click', async function () {
-    info = demoUser.DisplayProposal.call({ from: web3.eth.accounts[1] })
-    document.getElementById('Dinfo').innerHTML = info;   
+    var info = await BackendContract.methods.DisplayProposal().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});   
+    document.getElementById('Dinfo').innerHTML = info;  
 });
 
-document.getElementById('Cancel').addEventListener('click', function () {
-    demoUser.CancelAgreement();
+document.getElementById('Cancel').addEventListener('click', async function () {
+    await BackendContract.methods.CancelAgreement().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
+
+function logEvents(str,...arguments){
+    var logstr=arguments.toString();
+    document.getElementById("log").innerHTML +=str+" "+logstr+"\n";
+}
+
+function ErrorHandling(error){
+    if (error)
+        var msg = error.toString();
+        msg = msg.slice(0,msg.indexOf('{'))
+        msg = msg.replace('Error: execution reverted:', 'Error: ');
+        alert(msg);
+}
+
+async function asyncloaded() {
+    web3 = new Web3(Web3.givenProvider); // provider from metamask    
+    var result= await web3.eth.requestAccounts().catch(x=>logEvents(x.message));
+    logEvents(`web3 is present: ${web3.version}`); // note: use ` (back quote)
+    const network = await web3.eth.net.getId().catch( (reason) => logEvents(`Cannnot find network ${reason}`) );            
+    if (typeof network === 'undefined' || network != 4) 
+        { logEvents("Please select Rinkeby test network");return;}
+    logEvents("Ethereum network: Rinkeby")
+    accounts=await web3.eth.getAccounts(); 
+    BackendContract = new web3.eth.Contract(BackendABI, Backend);             
+}     
+
+window.addEventListener('load', asyncloaded);
