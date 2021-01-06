@@ -97,26 +97,24 @@ var accounts;
 var STATE = false
 
 document.getElementById('confrec').addEventListener('click', async function () {
-    await BackendContract.methods.SatisfiedClient().call({
+    await BackendContract.methods.WorkConfirmed().call({
         from: web3.eth.accounts[0]
     }).catch(error => {ErrorHandling(error)});
 });
 
 document.getElementById('trans').addEventListener('click', async function () {
-    await BackendContract.methods.Transfer().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    await BackendContract.methods.ContractTransferred().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
-
- 
 
 document.getElementById('sendProp').addEventListener('click', async function () {
     var form = document.getElementById("formuliertje").elements;
     var from2 = form[0];
     var Data = String(from2.value) 
-    await BackendContract.methods.ProposalSend(Data).send({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    await BackendContract.methods.SolutionsProposed(Data).send({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
 
 document.getElementById('Cancel').addEventListener('click', async function () {
-    await BackendContract.methods.CancelAgreement().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    await BackendContract.methods.ContractAbandoned().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
 
 function logEvents(str,...arguments){

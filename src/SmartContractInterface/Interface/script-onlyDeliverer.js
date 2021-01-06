@@ -97,11 +97,11 @@ var STATE = false
 var BackendContract;  
 
 document.getElementById('confdel').addEventListener('click', async function () {
-    await BackendContract.methods.WorkDelivered().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    await BackendContract.methods.ProjectAgreed().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
 
 document.getElementById('trans').addEventListener('click', async function () {
-    await BackendContract.methods.Transfer().call({from: accounts[0]}).catch(error => {ErrorHandling(error)})
+    await BackendContract.methods.ContractTransferred().call({from: accounts[0]}).catch(error => {ErrorHandling(error)})
 });
 
 document.getElementById('Accept').addEventListener('click', function () {
@@ -113,16 +113,16 @@ document.getElementById('Deny').addEventListener('click', function () {
 });
 
 document.getElementById('reply').addEventListener('click', async function () {
-    await BackendContract.methods.ProposalReply(STATE).send({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    await BackendContract.methods.ProposalReplied(STATE).send({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
 
 document.getElementById('Fetch').addEventListener('click', async function () {
-    var info = await BackendContract.methods.DisplayProposal().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});   
+    var info = await BackendContract.methods.ProposalDisplayed().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});   
     document.getElementById('Dinfo').innerHTML = info;  
 });
 
 document.getElementById('Cancel').addEventListener('click', async function () {
-    await BackendContract.methods.CancelAgreement().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    await BackendContract.methods.ContractAbandoned().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
 });
 
 function logEvents(str,...arguments){
