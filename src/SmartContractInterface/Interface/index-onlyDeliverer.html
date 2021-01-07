@@ -4,17 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
     <title>Smart Contract UI Demo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="./node_modules/web3/dist/web3.min.js"></script>
-    <script>
-    window.onerror = function (msg) {
-        msg = msg.replace('Error: VM Exception while processing transaction: revert', 'Error: ');
-        alert(msg);
-        return true
-        }
-    </script>
 </head>
 <body>
     <div class="header">
@@ -29,6 +22,7 @@
             <p></p>
         </section>
         <section>
+            <pre id="log"></pre> 
             <p>
                 Step 1: Fetch proposal
                 <button id="Fetch">Fetch</button>
@@ -58,7 +52,6 @@
             </p>
         </section>
     </div>
-    <script type="text/javascript" src="script-onlyDeliverer.js">
-    </script>
 </body>
+<script type="text/javascript" src="script-onlyDeliverer.js"></script>
 </html>
