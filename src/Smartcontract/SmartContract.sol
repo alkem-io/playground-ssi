@@ -11,6 +11,7 @@ contract SignalAt2PartyConfirmation {
     address payable deliverer;
     address payable owner;
     string store;
+    uint256 state;
     
     modifier onlyClient() {
         require(msg.sender == client, "Only the client can call this method");
@@ -31,17 +32,23 @@ contract SignalAt2PartyConfirmation {
         owner = _owner;
     }
     
-    function AddressesDefined() public {
+    function AddressesDefined() onlyOwner public {
         currentStateContract = StateContract.OPEN_FOR_SOLUTIONS;
+        state = 1;
+    }
+    
+    function CurrentStateReturned() public view returns (uint256) {
+        return state;
     }
     
     function SolutionsProposed(string memory description) onlyClient public {
         require(currentStateContract == StateContract.OPEN_FOR_SOLUTIONS, "Not open for solutions yet");
         currentStateContract = StateContract.SOLUTIONS_PROPOSED;
         store = description;
+        state = 2;
     }
     
-    function ProposalDisplayed() onlyDeliverer public view returns (string memory){
+    function ProposalDisplayed() onlyDeliverer public view returns (string memory) {
         require(currentStateContract == StateContract.SOLUTIONS_PROPOSED, "Solutions are not proposed yet");
         return store;
     }
@@ -50,17 +57,20 @@ contract SignalAt2PartyConfirmation {
         require(currentStateContract == StateContract.SOLUTIONS_PROPOSED, "Solutions are not proposed yet");
         if (agreed) {
             currentStateContract = StateContract.PROJECT_AGREED;
+            state = 3;
         }
     }
     
     function ProjectDelivered() onlyDeliverer external {
         require(currentStateContract == StateContract.PROJECT_AGREED, "Project has not yet been agreed upon");
         currentStateContract = StateContract.PROJECT_DELIVERED;
+        state = 4;
     }
     
     function WorkConfirmed() onlyClient external {
         require(currentStateContract == StateContract.PROJECT_DELIVERED, "Project has not yet been delivered");
         currentStateContract = StateContract.WORK_CONFIRMED;
+        state = 5;
     }
     
     function ContractTransferred() payable public {
@@ -68,6 +78,7 @@ contract SignalAt2PartyConfirmation {
         require(address(this).balance > 0, "There is no balance left in the smartcontract to be transfered");
         deliverer.transfer(address(this).balance);
         currentStateContract = StateContract.TRANSFER_OF_CONTRACT;
+        state = 6;
     }
     
     function ContractAbandoned() public {
@@ -79,6 +90,7 @@ contract SignalAt2PartyConfirmation {
         }
         if (clientAbandoned == ClientAbandoned.YES && delivererAbandoned == DelivererAbandoned.YES) {
             currentStateContract = StateContract.ABANDONED;
+            state = 7;
             selfdestruct(owner);
         }
     }
