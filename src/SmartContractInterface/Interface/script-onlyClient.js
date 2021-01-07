@@ -1,116 +1,141 @@
-const Backend='0x06160ab8270d3DC38905E746C1679ab57E781E4C'
+const Backend='0x28141FAf1DD3f1f601Fd868bd5FCf6577AE8bB82'
 const BackendABI=[
-    {
-        "inputs": [
-            {
-                "internalType": "address payable",
-                "name": "_client",
-                "type": "address"
-            },
-            {
-                "internalType": "address payable",
-                "name": "_deliverer",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "inputs": [],
-        "name": "CancelAgreement",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "DisplayProposal",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "bool",
-                "name": "agreed",
-                "type": "bool"
-            }
-        ],
-        "name": "ProposalReply",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "description",
-                "type": "string"
-            }
-        ],
-        "name": "ProposalSend",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "SatisfiedClient",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "SignalAmount",
-        "outputs": [],
-        "payable": true,
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "Transfer",
-        "outputs": [],
-        "payable": true,
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "WorkDelivered",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }
+	{
+		"inputs": [],
+		"name": "AddressesDefined",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "ContractAbandoned",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "ContractTransferred",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "ProjectDelivered",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "agreed",
+				"type": "bool"
+			}
+		],
+		"name": "ProposalReplied",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			}
+		],
+		"name": "SolutionsProposed",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "WorkConfirmed",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "_client",
+				"type": "address"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_deliverer",
+				"type": "address"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_owner",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "CurrentStateReturned",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "ProposalDisplayed",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
 ]
 
 var BackendContract;
 var accounts;
 var STATE = false
+var CurrentState;
 
 document.getElementById('confrec').addEventListener('click', async function () {
-    await BackendContract.methods.WorkConfirmed().call({
-        from: web3.eth.accounts[0]
+    await BackendContract.methods.WorkConfirmed().send({
+        from: accounts[0]
     }).catch(error => {ErrorHandling(error)});
+    location.reload();
+    return false;
 });
 
 document.getElementById('trans').addEventListener('click', async function () {
-    await BackendContract.methods.ContractTransferred().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    await BackendContract.methods.ContractTransferred().send({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    location.reload();
+    return false;
 });
 
 document.getElementById('sendProp').addEventListener('click', async function () {
     var form = document.getElementById("formuliertje").elements;
     var from2 = form[0];
-    var Data = String(from2.value) 
+    var Data = String(from2.value); 
     await BackendContract.methods.SolutionsProposed(Data).send({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    location.reload();
+    return false;
 });
 
 document.getElementById('Cancel').addEventListener('click', async function () {
@@ -139,7 +164,10 @@ async function asyncloaded() {
         { logEvents("Please select Rinkeby test network");return;}
     logEvents("Ethereum network: Rinkeby")
     accounts=await web3.eth.getAccounts(); 
-    BackendContract = new web3.eth.Contract(BackendABI, Backend);               
+    logEvents(`Current connected account: ${accounts[0]}`);
+    BackendContract = new web3.eth.Contract(BackendABI, Backend);   
+    CurrentState = await BackendContract.methods.CurrentStateReturned().call({from: accounts[0]}).catch(error => {ErrorHandling(error)});
+    logEvents(`Currentstate: ${CurrentState}`);           
 }     
 
 window.addEventListener('load', asyncloaded); 
