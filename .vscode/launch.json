@@ -7,7 +7,7 @@
             "request": "launch",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
-                "run", "identities-demo"
+                "run", "Signing"
             ],
             "skipFiles": [
                 "<node_internals>/**"
