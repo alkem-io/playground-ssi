@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
     <div class="header">
         <header>
@@ -22,29 +24,37 @@
             <p></p>
         </section>
         <section>
-            <pre id="log"></pre> 
-            <p>
-                Step 1: Send proposal
-                <br>
-                <form id="formuliertje"rows="5" cols="30">
+            <h3>Technical Stats</h3>
+            <pre id="log"></pre>
+            <div id="a1">
+                <p>
+                    Step 1: Send proposal
+                    <br>
+                <form id="formuliertje" rows="5" cols="30">
                     <label>
-                        <input  name="textje" placeholder="Enter Proposal" maxlength="125" style='width:80%'>
+                        <input name="textje" placeholder="Enter Proposal" maxlength="125" style='width:80%'>
                     </label>
                     <button id="sendProp">Send</button>
                 </form>
-            </p>
-            <p>
-                Step 2: Confirm receiving
-                <button id="confrec">Confirm</button>
-            </p>
+                </p>
+            </div>
+            <div id="a5">
+                <p>
+                    Step 2: Confirm receiving
+                    <button id="confrec">Confirm</button>
+                </p>
+            </div>
             <br>
-            <p>
-                Step 3: Transfer
-                <button id="trans">Transfer</button>
-            </p>
+            <div id="a6">
+                <p>
+                    Step 3: Transfer
+                    <button id="trans">Transfer</button>
+                </p>
+            </div>
         </section>
     </div>
-    
+
 </body>
 <script type="text/javascript" src="script-onlyClient.js"></script>
+
 </html>
