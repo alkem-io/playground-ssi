@@ -1,4 +1,4 @@
-const Backend = '0x55095f20a27ab0E74cb571bc9806844a8e970F7C'
+const Backend = '0x9e178f0AD91b3A05bD9042e680A8fb3Fd7CB3657'
 const BackendABI = [
     {
         "inputs": [],
@@ -149,7 +149,7 @@ document.getElementById('sendProp').addEventListener('click', async function () 
 });
 
 document.getElementById('Cancel').addEventListener('click', async function () {
-    await BackendContract.methods.ContractAbandoned().call({
+    await BackendContract.methods.ContractAbandoned().send({
         from: accounts[0]
     }).catch(error => {
         ErrorHandling(error)
@@ -189,22 +189,40 @@ async function asyncloaded() {
     });
     logEvents(`Currentstate: ${CurrentState}`);
 
-    if (CurrentState == 7) {
-        document.querySelectorAll("a1", "a2", "a3", "a4", "a5", "a6", "a7").style.display = block;
+    if (CurrentState == 7 || CurrentState == 'undefined') {
+        for(i = 1; i < 8; i++){
+            document.querySelector(`#a${i}`).style.display = 'none';
+        document.querySelector(`#a8`).style.display = 'block';
+        }    
+            
     } else if (CurrentState == 6) {
-        document.querySelectorAll("a1", "a2", "a3", "a4", "a5", "a6").style.display = block;
+        for(i = 1; i < 8; i++){
+            document.querySelector(`#a${i}`).style.display = 'block';
+            }
     } else if (CurrentState == 5) {
-        document.querySelectorAll("a1", "a2", "a3", "a4", "a5").style.display = block;
+        for(i = 1; i < 7; i++){
+            document.querySelector(`#a${i}`).style.display = 'block';
+            }
     } else if (CurrentState == 4) {
-        document.querySelectorAll("a1", "a2", "a3", "a4").style.display = block;
+        for(i = 1; i < 6; i++){
+            document.querySelector(`#a${i}`).style.display = 'block';
+            }
     } else if (CurrentState == 3) {
-        document.querySelectorAll("a1", "a2", "a3").style.display = block;
+        for(i = 1; i < 5; i++){
+            document.querySelector(`#a${i}`).style.display = 'block';
+            }
     } else if (CurrentState == 2) {
-        document.querySelectorAll("a1", "a2").style.display = block;
+        for(i = 1; i < 4; i++){
+        document.querySelector(`#a${i}`).style.display = 'block';
+        }
     } else if (CurrentState == 1) {
-        document.querySelectorAll("a1").style.display = block;
+        for(i = 1; i < 2; i++){
+            document.querySelector(`#a${i}`).style.display = 'block';
+            }
     } else if (CurrentState == 0) {
-        document.querySelectorAll("a1").style.display = block;
+        for(i = 1; i < 2; i++){
+            document.querySelector(`#a${i}`).style.display = 'block';
+            }
     }
 }
 
