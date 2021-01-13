@@ -14,6 +14,20 @@
             ],
             "console": "integratedTerminal"
                       
+        },
+        {
+            "name": "Signing",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run", "Signing"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal"
+                      
         }
     ]
 }
