@@ -30,6 +30,14 @@ h2 {
     font-family:'Montserrat', sans-serif;
 }
 
+h3 {
+    font-family:'Montserrat', sans-serif;
+    font-size: 16px;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+}
+
 .section {
     width: 80%;
 }
@@ -59,3 +67,36 @@ p {
     padding-bottom: 10px;
     font-family: monospace
 }
+
+#a1{
+    display: none;
+}
+
+#a2{
+    display: none;
+}
+
+#a3{
+    display: none;
+}
+
+#a4{
+    display: none;
+}
+
+#a5{
+    display: none;
+}
+
+#a6{
+    display: none;
+}
+
+#a7{
+    display: none;
+}
+
+#a8{
+    display: none;
+}
+

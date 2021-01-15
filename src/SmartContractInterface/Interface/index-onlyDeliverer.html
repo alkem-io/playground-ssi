@@ -1,19 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
     <title>Smart Contract UI Demo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
     <div class="header">
         <header>
             <h1>Smart Contract Interface</h1>
-            <button id="Cancel">Cancel Agreement</button>
+            <button id="Cancel">Abandon project</button>
         </header>
     </div>
     <div class="section">
@@ -22,36 +24,59 @@
             <p></p>
         </section>
         <section>
-            <pre id="log"></pre> 
-            <p>
-                Step 1: Fetch proposal
-                <button id="Fetch">Fetch</button>
+            <h3>Technical Stats</h3>
+            <pre id="log"></pre>
+            <br>
+            <div id="a2">
+                <p>
+                    Step 1: Fetch proposal
+                    <button id="Fetch">Fetch</button>
                 <p id="Dinfo"></p>
-            </p>
-            <p>
-                Step 2: Accept or deny proposal
-                <button id="Accept">Accept</button>
+                </p>
+            </div>
+            <div id="a3">
+                <p>
+                    Step 2: Accept or deny proposal
+                    <button id="Accept">Accept</button>
+                    <br>
+                    <br>
+                    <button id="Deny">Deny</button>
+                </p>
                 <br>
-                <br>
-                <button id="Deny">Deny</button>
-            </p>
+                <p>
+                    Step 3: Send reply to the client
+                    <button id="reply">Send</button>
+                </p>
+            </div>
             <br>
-            <p>
-                Step 3: Now send your reply to the client
-                <button id="reply">Send</button>
-            </p>
+            <div id="a4">
+                <p>
+                    Step 4: Confirm project delivery
+                    <button id="confdel">Confirm</button>
+                </p>
+            </div>
             <br>
-            <p>
-                Step 4: Confirm delivery
-                <button id="confdel">Confirm</button>
-            </p>
-            <br>
-            <p>
-                Step 5: Transfer
-                <button id="trans">Transfer</button>
-            </p>
+            <div id="a6">
+                <p>
+                    Step 5: Transfer
+                    <button id="trans">Transfer</button>
+                </p>
+            </div>
+            <div id="a1"></div>
+            <div id="a5"></div>
+            <div id="a7">
+                <p>
+                    Project has been completed! Thank you for using the Cherrytwist platform!
+                </p> 
+            </div>        
+            <div id="a8">
+                <p>
+                    Project has been abandoned by both parties! Hope to see you again on the Cherrytwist platform!
+                </p>
+            </div>
         </section>
     </div>
 </body>
 <script type="text/javascript" src="script-onlyDeliverer.js"></script>
+
 </html>

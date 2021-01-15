@@ -88,6 +88,7 @@ contract SignalAt2PartyConfirmation {
         if (msg.sender == deliverer) {
             delivererAbandoned = DelivererAbandoned.YES;
         }
+        require(clientAbandoned == ClientAbandoned.YES && delivererAbandoned == DelivererAbandoned.YES, "Not all parties agreed to abandon contract");
         if (clientAbandoned == ClientAbandoned.YES && delivererAbandoned == DelivererAbandoned.YES) {
             currentStateContract = StateContract.ABANDONED;
             state = 7;
