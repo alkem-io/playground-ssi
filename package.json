@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "identities-demo": "ts-node-dev src/identity-manager/identities-demo"
+    "identities-demo": "ts-node-dev src/identity-manager/identities-demo",
+    "Signing": "ts-node-dev src/identity-manager/Signing"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +17,7 @@
     "0g": "0.0.4",
     "@jolocom/sdk": "^1.0.0",
     "@jolocom/sdk-storage-typeorm": "^4.0.0",
-    "budo": "^11.6.4",
+    "@jolocom/vaulted-key-provider": "^0.7.4",
     "cli-interact": "^0.1.9",
     "ethers": "^5.0.19",
     "generate-password": "^1.5.1",
