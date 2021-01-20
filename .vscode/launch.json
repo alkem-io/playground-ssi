@@ -28,6 +28,20 @@
             ],
             "console": "integratedTerminal"
                       
+        },
+        {
+            "name": "VC",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run", "Verf"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal"
+                      
         }
     ]
 }
