@@ -4,3 +4,4 @@
 *.log
 agent*File
 credentials.json
+VerifiedCredential.json

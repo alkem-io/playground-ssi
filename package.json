@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "identities-demo": "ts-node-dev src/identity-manager/identities-demo",
-    "Signing": "ts-node-dev src/identity-manager/Signing"
+    "Signing": "ts-node-dev src/identity-manager/Signing",
+    "Verf": "ts-node-dev src/identity-manager/VerfiableCred"
   },
   "author": "",
   "license": "ISC",

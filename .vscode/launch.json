@@ -7,7 +7,7 @@
             "request": "launch",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
-                "run", "Signing"
+                "run", "Verf"
             ],
             "skipFiles": [
                 "<node_internals>/**"
