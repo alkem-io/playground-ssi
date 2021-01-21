@@ -1,0 +1,55 @@
+const SmartContractMachine = Machine({
+    id: 'Smart Contract',
+    initial: 'inactive',
+
+    states: {
+      inactive: {
+        on: {
+          Upload_proposal: 'Open_for_solutions'
+        }
+      },
+
+      Open_for_solutions: {
+        on: {
+          Deliverer_connects_to_smart_contract: 'Solution_proposed',
+          Client_declines: 'Open_for_solutions'
+        }
+      },
+
+      Solution_proposed: {
+        on: {
+          Client_and_Deliverer_agree_price_and_proposal: 'Project_agreed'
+        }
+      },
+
+      Project_agreed: {
+        on: {
+          Deliverer_uploads_work_and_confirms_deliverery: 'Project_delivered',
+          Client_or_deliverer_deny_contract: 'Abandoned'
+        }
+      },
+
+      Project_delivered: {
+        on: {
+          Client_confirms_delivery: 'Work_confirmed',
+          Client_or_deliverer_deny_contract: 'Abandoned'
+        }
+      },
+
+      Work_confirmed: {
+        on: {
+          Client_or_deliverer_transfers_Smart_Contract: 'Transfer_of_contract',
+         Client_or_deliverer_deny_contract: 'Abandoned'
+        }
+      },
+
+      Transfer_of_contract: {
+        type: 'final'
+      },
+
+      Abandoned: {
+        type: 'final'
+      },
+
+    }
+  });
