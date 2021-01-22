@@ -51,6 +51,7 @@ async function directSigning(password: string, agent: Agent, message: Buffer) {
   const pubKeys = await agent.keyProvider.getPubKeys(password);
   for (let i = 0; i < pubKeys.length; i++) {
     const pubKey = pubKeys[i];
+    console.log(`===== Key #${i} ===> : id '${pubKey.id}' --- controller ${pubKey.controller}' --- type ${pubKey.type}`);
 
     try {
       const signature = await agent.keyProvider.sign(
@@ -61,9 +62,7 @@ async function directSigning(password: string, agent: Agent, message: Buffer) {
       message
     );
     console.log(
-      `Signing2: '${message.toString("utf-8")}' of type ${
-        pubKey.type
-      } ==> ${signature.toString("hex")}`
+      `sign(${message.toString("utf-8")}) ==> ${signature.toString("hex")}`
     );
     } catch (e) {
       console.error(`Unable to process pub key ${pubKey.type} : ${e}`);
