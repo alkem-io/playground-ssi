@@ -69,14 +69,16 @@ async function init() {
     // Note: should be same as interaction above....check!
     const bobCredExchangeInteraction2 = await bob.processJWT(aliceCredIssuance.encode());
 
-    const state = (bobCredExchangeInteraction2.getSummary() as any).state
-
+    const state: any = bobCredExchangeInteraction2.flow.state;
+    
     if (state.credentialsAllValid) {
         identityMgr.logger.info("Issued credential interaction is valid!");
-        await Promise.all(
-          state.issued.map((VC: SignedCredential) =>  bob.storage.store.verifiableCredential(VC)),
-        )
-        identityMgr.logger.info("Saving verfied interaction^^");
+        for (let i = 0; i < state.issued.length; i++) {
+          const vc = state.issued[i];
+          await bob.storage.store.verifiableCredential(vc);
+          identityMgr.logger.info(`Saving verfied credential: ${JSON.stringify(vc)}`);
+        }
+   
         await fs.appendFileSync("VerfiedCredential.json", JSON.stringify(state)+"\r\n");
     }
 }   

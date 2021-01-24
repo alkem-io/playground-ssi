@@ -30,12 +30,12 @@
                       
         },
         {
-            "name": "VC",
+            "name": "InteractionExchangeVC",
             "type": "node",
             "request": "launch",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
-                "run", "Verf"
+                "run", "InteractionExchangeVC"
             ],
             "skipFiles": [
                 "<node_internals>/**"

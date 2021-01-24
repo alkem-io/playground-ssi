@@ -7,7 +7,7 @@
     "test": "jest",
     "identities-demo": "ts-node-dev src/identity-manager/identities-demo",
     "Signing": "ts-node-dev src/identity-manager/Signing",
-    "Verf": "ts-node-dev src/identity-manager/VerfiableCred"
+    "InteractionExchangeVC": "ts-node-dev src/identity-manager/InteractionExchangeVC"
   },
   "author": "",
   "license": "ISC",
