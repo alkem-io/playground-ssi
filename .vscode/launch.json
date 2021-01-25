@@ -2,20 +2,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "CherryIdentities",
-            "type": "node",
-            "request": "launch",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": [
-                "run", "Verf"
-            ],
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "console": "integratedTerminal"
-                      
-        },
-        {
             "name": "Signing",
             "type": "node",
             "request": "launch",
@@ -30,12 +16,26 @@
                       
         },
         {
-            "name": "InteractionExchangeVC",
+            "name": "interaction-auth",
             "type": "node",
             "request": "launch",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
-                "run", "InteractionExchangeVC"
+                "run", "interaction-auth"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal"
+                      
+        },
+        {
+            "name": "interaction-vc",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run", "interaction-vc"
             ],
             "skipFiles": [
                 "<node_internals>/**"
