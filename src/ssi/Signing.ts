@@ -1,5 +1,5 @@
 import { ConnectionOptions, createConnection } from "typeorm";
-import typeormConfig from "./agents-ormconfig";
+import typeormConfig from "./config/agents-ormconfig";
 import { JolocomTypeormStorage } from "@jolocom/sdk-storage-typeorm";
 import { Agent, JolocomLib, JolocomSDK } from "@jolocom/sdk";
 import { KeyTypes } from "@jolocom/vaulted-key-provider";
@@ -43,10 +43,10 @@ async function init() {
   console.log(`keypair: ${keyPair}`);
   //agent.keyProvider.sign()
 
-  await directSigning(password, agent, input_msg_buffer);
+  await signAllKnownKeys(password, agent, input_msg_buffer);
 }
 
-async function directSigning(password: string, agent: Agent, message: Buffer) {
+async function signAllKnownKeys(password: string, agent: Agent, message: Buffer) {
   
   const pubKeys = await agent.keyProvider.getPubKeys(password);
   for (let i = 0; i < pubKeys.length; i++) {

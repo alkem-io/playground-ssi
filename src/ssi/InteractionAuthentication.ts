@@ -1,6 +1,6 @@
 import { ConnectionOptions, createConnection } from 'typeorm';
-import typeormConfig from './agents-ormconfig';
-import { IdentityManager } from './IdentityManager';
+import typeormConfig from './config/agents-ormconfig';
+import { IdentityManager } from './util/IdentityManager';
 
 import fs from "fs";
 
@@ -20,7 +20,8 @@ async function init(stage: string) {
   identityMgr.logger.info(`Executing phase ${stage}...`);
   if (stage === '1') {
     identityMgr.logger.info("Generating agent1 identity...");
-    const agent1 = await identityMgr.createAgent();
+    const password1 = "password1";
+    const agent1 = await identityMgr.createAgent(password1);
     fs.writeFileSync(agent1DidFile, agent1.identityWallet.did);
     identityMgr.logger.info(`...generated agent1: ${agent1.identityWallet.did}`);
 
@@ -39,7 +40,8 @@ async function init(stage: string) {
 
   } else if (stage === '2') {
     identityMgr.logger.info("Generating agent1 identity...");
-    const agent2 = await identityMgr.createAgent();
+    const password2 = "password2";
+    const agent2 = await identityMgr.createAgent(password2);
     fs.writeFileSync(agent2DidFile, agent2.identityWallet.did);
     identityMgr.logger.info(`...generated agent2: ${agent2.identityWallet.did}`);
 

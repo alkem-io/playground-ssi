@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "identities-demo": "ts-node-dev src/identity-manager/identities-demo",
-    "Signing": "ts-node-dev src/identity-manager/Signing",
-    "Verf": "ts-node-dev src/identity-manager/VerfiableCred"
+    "interaction-auth": "ts-node-dev src/ssi/InteractionAuthentication",
+    "interaction-vc": "ts-node-dev src/ssi/InteractionExchangeVC",
+    "Signing": "ts-node-dev src/ssi/Signing"
+    
   },
   "author": "",
   "license": "ISC",
