@@ -28,8 +28,6 @@ The diagram below depicts the same interaction flow, the "connect to smart contr
 
 ![Diagram](https://user-images.githubusercontent.com/71760326/98146813-20f4ae00-1ecc-11eb-9e40-ebf2cbb08a21.png)
 
-
-
 # The Functions of the smart contract:
 - [x] Client initiates contract & uploads proposal.
 - [x] Deliverer connects to smart contract & agrees on the project.
@@ -53,33 +51,8 @@ These states have also been visualized in XStates, XStates can be included in th
 - [x] ContractTransferred: Deliverers and clients can transfer the funds one the Client and the Deliverers have both confirmed delivery and satisfaction.
 - [x] ContrtactAbandoned: Contract is abandoned if both parties agree to do so.
 
-
-
 # User interface
-The smart contract is accessible for both the Client and the Deliverers separately.
-
-### **Necessary functions of the user interface for the Client's side:**
-- [ ] Client can access this portal using their self sovereign identity (or their web2 account).
-- [x] Client can add a description of the problem to its proposal.
-- [x] Client can send the proposal to the smart contract.
-
-
-- [x] Client can send a signal amount to the smart contract.
-
-
-- [x] Client can cancel the contract if the Deliverers agree as well.
-- [x] Client can confirm the delivered work.
-- [x] Client can transfer the smart contract.
-
-### **Necessary functions of the user interface for the Deliverer's side:**
-- [ ] Deliverers can access this portal using their self sovereign identity (or their web2 account).
-- [x] Deliverers can fetch the Client's proposal.
-- [x] Deliverers can accept or deny this proposal.
-- [x] Deliverers can send this reply (accept/deny) to the contract.
-- [x] Deliverers can cancel the contract if the Client agrees as well.
-- [x] Deliverers can confirm delivery of the project.
-- [x] Deliverers can transfer the smart contract.
-
+The user interface consists of a single-page React application where the Client and the Deliverer dashboard both depict a different layout. From the landing page they are redirected to the relevant dashboard based on their connected MetaMask address. Each dashboard depicts certain elements based on the current Smart Contract state. In the future the SSI can be added and used in this application by making a package out of the SSI folder.
 
 # Self Sovereign Identities
 The custodian has access to an identity manager which loads or creates agents depending on the user's password. These agents can initiate a verifiable interaction. The image below depicts a simplified credential interaction visualisation.
